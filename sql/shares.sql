@@ -1,0 +1,7 @@
+CREATE TABLE shares (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    company TEXT NOT NULL,
+    shares INTEGER NOT NULL,
+    price INTEGER NOT NULL,
+    time_bought DATETIME,
+    user TEXT NOT NULL);

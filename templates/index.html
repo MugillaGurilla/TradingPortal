@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+{% if first_time %}
+<div class="text-center">
+    <div class="justify-content-center align-items-center">
+      <div class="registered">
+        <p>Registered!</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="text-center">
+    <div class="row">
+        <p>Hello <b>{{ user }}</b>, your current cash balance is {{ balance }}</p>
+        <p>Your total balance, including stocks, is {{ grand_total }}</p>
+    </div>
+</div>
+
+<div class="text-center">
+    <div class="row">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 history-table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Shares</th>
+                        <th>Price Bought</th>
+                        <th>Price Now</th>
+                        <th>Purchased</th>
+                        <th>Total Value</th>
+                        <th>Gain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in stocks %}
+                    <tr>
+                        <td>{{ stock["company"] }}</td>
+                        <td>{{ stock["shares"] }}</td>
+                        <td>{{ stock["price"] }}</td>
+                        <td>{{ stock["current_price"] }}</td>
+                        <td>{{ stock["time_bought"] }}</td>
+                        <td>{{ stock["total_value"] }}</td>
+                        <td>{{ stock["gain"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<div class="text-center">
+    <div class="row">
+        <p>Hello <b>{{ user }}</b>, your transaction history is below</p>
+    </div>
+</div>
+
+<div class="text-center">
+    <div class="row">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10 history-table">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Type</th>
+                        <th>Shares</th>
+                        <th>Price</th>
+                        <th>Time</th>
+                        <th>User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction["company"] }}</td>
+                        <td>{{ transaction["of_type"] }}</td>
+                        <td>{{ transaction["shares"] }}</td>
+                        <td>{{ transaction["price"] }}</td>
+                        <td>{{ transaction["time_bought"] }}</td>
+                        <td>{{ transaction["user"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-1">
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
